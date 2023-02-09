@@ -1,0 +1,59 @@
+﻿VideoGamesDb,dbo,Customers,Id,1,int,NULL,PRIMARY KEY,NULL,NULL,NULL
+VideoGamesDb,dbo,Customers,Email,2,nvarchar,250,UNIQUE,NULL,NULL,NULL
+VideoGamesDb,dbo,Customers,Username,3,varchar,32,NULL,NULL,NULL,NULL
+VideoGamesDb,dbo,Customers,Password,4,nvarchar,250,NULL,NULL,NULL,NULL
+VideoGamesDb,dbo,Customers,RegionId,5,int,NULL,FOREIGN KEY,dbo,Regions,Id
+VideoGamesDb,dbo,Customers,DefaultPaymentMethodId,6,int,NULL,FOREIGN KEY,dbo,PaymentMethods,Id
+VideoGamesDb,dbo,Customers,Address,7,nvarchar,500,NULL,NULL,NULL,NULL
+VideoGamesDb,dbo,GameGenres,GameId,1,int,NULL,FOREIGN KEY,dbo,Games,Id
+VideoGamesDb,dbo,GameGenres,GameId,1,int,NULL,PRIMARY KEY,NULL,NULL,NULL
+VideoGamesDb,dbo,GameGenres,GenreId,2,int,NULL,FOREIGN KEY,dbo,Genres,Id
+VideoGamesDb,dbo,GameGenres,GenreId,2,int,NULL,PRIMARY KEY,NULL,NULL,NULL
+VideoGamesDb,dbo,GamePlatforms,GameId,1,int,NULL,FOREIGN KEY,dbo,Games,Id
+VideoGamesDb,dbo,GamePlatforms,GameId,1,int,NULL,PRIMARY KEY,NULL,NULL,NULL
+VideoGamesDb,dbo,GamePlatforms,PlatformId,2,int,NULL,FOREIGN KEY,dbo,Platforms,Id
+VideoGamesDb,dbo,GamePlatforms,PlatformId,2,int,NULL,PRIMARY KEY,NULL,NULL,NULL
+VideoGamesDb,dbo,GameRegions,GameId,1,int,NULL,FOREIGN KEY,dbo,Games,Id
+VideoGamesDb,dbo,GameRegions,GameId,1,int,NULL,PRIMARY KEY,NULL,NULL,NULL
+VideoGamesDb,dbo,GameRegions,RegionId,2,int,NULL,FOREIGN KEY,dbo,Regions,Id
+VideoGamesDb,dbo,GameRegions,RegionId,2,int,NULL,PRIMARY KEY,NULL,NULL,NULL
+VideoGamesDb,dbo,Games,Id,1,int,NULL,PRIMARY KEY,NULL,NULL,NULL
+VideoGamesDb,dbo,Games,Title,2,nvarchar,250,NULL,NULL,NULL,NULL
+VideoGamesDb,dbo,Games,Edition,3,nvarchar,50,NULL,NULL,NULL,NULL
+VideoGamesDb,dbo,Games,ReleaseYear,4,int,NULL,NULL,NULL,NULL,NULL
+VideoGamesDb,dbo,Games,PublisherId,5,int,NULL,FOREIGN KEY,dbo,Publishers,Id
+VideoGamesDb,dbo,Games,Price,6,float,NULL,NULL,NULL,NULL,NULL
+VideoGamesDb,dbo,Games,Discount,7,int,NULL,NULL,NULL,NULL,NULL
+VideoGamesDb,dbo,Genres,Id,1,int,NULL,PRIMARY KEY,NULL,NULL,NULL
+VideoGamesDb,dbo,Genres,Genre,2,varchar,50,UNIQUE,NULL,NULL,NULL
+VideoGamesDb,dbo,Invoices,Id,1,int,NULL,PRIMARY KEY,NULL,NULL,NULL
+VideoGamesDb,dbo,Invoices,OrderId,2,int,NULL,FOREIGN KEY,dbo,Transactions,Id
+VideoGamesDb,dbo,Invoices,Date,3,datetime,NULL,NULL,NULL,NULL,NULL
+VideoGamesDb,dbo,PaymentMethods,Id,1,int,NULL,PRIMARY KEY,NULL,NULL,NULL
+VideoGamesDb,dbo,PaymentMethods,PaymentMethod,2,varchar,50,UNIQUE,NULL,NULL,NULL
+VideoGamesDb,dbo,Platforms,Id,1,int,NULL,PRIMARY KEY,NULL,NULL,NULL
+VideoGamesDb,dbo,Platforms,Platform,2,nvarchar,100,UNIQUE,NULL,NULL,NULL
+VideoGamesDb,dbo,Platforms,PlatformShort,3,varchar,4,NULL,NULL,NULL,NULL
+VideoGamesDb,dbo,Publishers,Id,1,int,NULL,PRIMARY KEY,NULL,NULL,NULL
+VideoGamesDb,dbo,Publishers,Publisher,2,nvarchar,250,UNIQUE,NULL,NULL,NULL
+VideoGamesDb,dbo,Regions,Id,1,int,NULL,PRIMARY KEY,NULL,NULL,NULL
+VideoGamesDb,dbo,Regions,Region,2,varchar,50,UNIQUE,NULL,NULL,NULL
+VideoGamesDb,dbo,Reviews,CustomerId,1,int,NULL,FOREIGN KEY,dbo,Customers,Id
+VideoGamesDb,dbo,Reviews,CustomerId,1,int,NULL,PRIMARY KEY,NULL,NULL,NULL
+VideoGamesDb,dbo,Reviews,GameId,2,int,NULL,FOREIGN KEY,dbo,Games,Id
+VideoGamesDb,dbo,Reviews,GameId,2,int,NULL,PRIMARY KEY,NULL,NULL,NULL
+VideoGamesDb,dbo,Reviews,Rating,3,int,NULL,NULL,NULL,NULL,NULL
+VideoGamesDb,dbo,Reviews,Review,4,nvarchar,-1,NULL,NULL,NULL,NULL
+VideoGamesDb,dbo,sysdiagrams,name,1,nvarchar,128,UNIQUE,NULL,NULL,NULL
+VideoGamesDb,dbo,sysdiagrams,principal_id,2,int,NULL,UNIQUE,NULL,NULL,NULL
+VideoGamesDb,dbo,sysdiagrams,diagram_id,3,int,NULL,PRIMARY KEY,NULL,NULL,NULL
+VideoGamesDb,dbo,sysdiagrams,version,4,int,NULL,NULL,NULL,NULL,NULL
+VideoGamesDb,dbo,sysdiagrams,definition,5,varbinary,-1,NULL,NULL,NULL,NULL
+VideoGamesDb,dbo,Transactions,Id,1,int,NULL,PRIMARY KEY,NULL,NULL,NULL
+VideoGamesDb,dbo,Transactions,CustomerId,2,int,NULL,FOREIGN KEY,dbo,Customers,Id
+VideoGamesDb,dbo,Transactions,CustomerId,2,int,NULL,UNIQUE,NULL,NULL,NULL
+VideoGamesDb,dbo,Transactions,GameId,3,int,NULL,FOREIGN KEY,dbo,Games,Id
+VideoGamesDb,dbo,Transactions,GameId,3,int,NULL,UNIQUE,NULL,NULL,NULL
+VideoGamesDb,dbo,Transactions,Date,4,datetime,NULL,NULL,NULL,NULL,NULL
+VideoGamesDb,dbo,Transactions,PaymentMethodId,5,int,NULL,FOREIGN KEY,dbo,PaymentMethods,Id
+VideoGamesDb,dbo,Transactions,TotalPrice,6,float,NULL,NULL,NULL,NULL,NULL
